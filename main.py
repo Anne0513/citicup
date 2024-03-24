@@ -54,6 +54,17 @@ if user_input:
         dot.node(edge[1], style='filled')
         dot.edge(edge[0], edge[1], label=str(edge[2])+'\%')
 
+#先试一下
+def expand_node(node_id):
+    node = dot.node(node_id)
+    node.attr('style', 'filled')  # 更改节点样式以显示节点
+    dot.edge(edge[0], edge[1], label=str(edge[2])+'\%')  # 添加从 A 到目标节点的边
+
+def collapse_node(node_id):
+    node = dot.node(node_id)
+    node.attr('style', 'invis')  # 更改节点样式以隐藏节点
+    dot.edges(['AB'])  # 重置边，只保留 A 到 B 的边
+
     st.write(f'<div style="display:flex; justify-content:left; width:50vw;">'
             f'<div style="width:100%; max-width:80px; transform: scale(0.7); transform-origin: top left;">'
             f'{dot.pipe(format="svg").decode("utf-8")}</div>'
